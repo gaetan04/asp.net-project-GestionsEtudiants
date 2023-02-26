@@ -1,0 +1,60 @@
+﻿@model IEnumerable<GestionEtudiants.Models.Student>
+
+@{
+    ViewBag.Title = "Page d'affiche de la liste des étudiants";
+    var data = ViewData["students"];
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+<p>
+    <a href="FormulaireAjout" class="btn btn-primary">Add New Student</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SurName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Filiere)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sexe)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SurName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Filiere)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sexe)
+            </td>
+                <td>
+                    @Html.ActionLink("Details", "Detail", new { id = item.StudentId }, new { @class = "btn btn-info" })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.StudentId }, new { @class = "btn btn-danger" })
+                    @Html.ActionLink("Edit", "Edit", new { id = item.StudentId }, new { @class = "btn btn-warning" })
+                </td>
+
+        </tr>
+}
+    </tbody>
+</table>
+

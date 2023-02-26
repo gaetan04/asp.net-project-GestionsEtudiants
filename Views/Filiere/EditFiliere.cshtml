@@ -1,0 +1,15 @@
+﻿@model GestionEtudiants.Models.Filiere
+@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+<h1>Update Filiere</h1>
+
+<form action="Update" method="post">
+    <div class="form-group">
+        <label asp-for="FiliereName" class="control-label">Filiere Name</label>
+        <input name="FiliereName" class="form-control" value="@Model.FiliereName" />
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Update" class="btn btn-primary" />
+    </div>
+</form>

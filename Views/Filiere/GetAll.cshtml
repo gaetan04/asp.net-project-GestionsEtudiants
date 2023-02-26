@@ -1,0 +1,41 @@
+﻿@model IEnumerable<GestionEtudiants.Models.Filiere>
+@{
+    //ViewBag.Title = "Page d'affiche de la liste des filieres";
+    var data = ViewData["filieres"];
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+<p>
+    <a href="FormulaireAjoutFiliere" class="btn btn-primary">Add New Filiere</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FiliereId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FiliereName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FiliereId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FiliereName)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Detail", new { id = item.FiliereId }, new { @class = "btn btn-info" })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.FiliereId }, new { @class = "btn btn-danger" })
+                    @Html.ActionLink("Edit", "EditFiliere", new { id = item.FiliereId }, new { @class = "btn btn-warning" })
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
